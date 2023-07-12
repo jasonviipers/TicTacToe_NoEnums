@@ -30,7 +30,7 @@ const Field = () => {
   if (winner) {
     status = 'Winner is ' + winner;
   } else {
-    status = 'Active player is ' + (activePlayerX ? 'X' : '❤');
+    status = 'Active player is ' + (activePlayerX ? 'X' : '❤️');
   }
 
   return (
