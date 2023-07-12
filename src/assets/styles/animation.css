@@ -1,0 +1,21 @@
+.bg-pan-left {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(270deg, #cc6aa5, #3e91cc, #2dcca7);
+    animation: bg-pan-left 8s both;
+    background-size: 600% 100%
+}
+
+@keyframes bg-pan-left {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

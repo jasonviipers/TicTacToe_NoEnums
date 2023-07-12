@@ -1,0 +1,71 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: hsl(200, 10%, 50%);
+    background-image: radial-gradient(hsl(200, 10%, 50%), hsl(210, 10%, 50%));
+    color: white;
+    font-family: "Raleway", Helvetica, Arial, sans-serif;
+    line-height: 1.4;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.h1 {
+    font-family: "Raleway", Helvetica, Arial, sans-serif;
+    font-size: 4em;
+    font-weight: 400;
+}
+
+main {
+    display: block;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.2em;
+    /* column-gap: 0.5em; */
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.2em;
+
+}
+
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    width: 10em;
+    height: 10em;
+    border-radius: 1em;
+}
+
+.red {
+    color: red;
+    fill: red;
+}
