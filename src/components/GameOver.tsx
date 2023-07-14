@@ -10,8 +10,8 @@ function GameOver({ winner }: GameOverProps) {
       <div className='modal'>
         <div className='modal-backdrop'></div>
         <div className='modal-body container'>
-          <div className='row text-emphasize bounce-in-left '>Winner is</div>
-          <div className='row text-emphasize bounce-in-right '>
+          <div className=' text-emphasize bounce-in-left '>Winner is</div>
+          <div className=' text-emphasize bounce-in-right '>
             {transformmedWinner}
           </div>
         </div>

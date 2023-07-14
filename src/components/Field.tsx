@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Mark from './Mark';
+import GameOver from './GameOver';
 
 const Field = () => {
   //Declaration of Hooks
@@ -28,7 +29,11 @@ const Field = () => {
   const winner = calculateTheWinner(squares);
 
   if (winner) {
-    status = 'Winner is ' + winner;
+    // status = 'Winner is ' + winner;
+    // const transformedWinner = winner.toString();
+    status = 'GAME OVER';
+
+    <GameOver winner='X' />;
   } else {
     status = 'Active player is ' + (activePlayerX ? 'X' : '❤️');
   }

@@ -1,12 +1,9 @@
-import Field from './components/Field';
-// import './assets/styles/animation.css';
-import GameOver from './components/GameOver';
+import Game from './components/Game';
 
 function App() {
   return (
     <>
-      <Field />
-      <GameOver winner='X' />
+      <Game />
     </>
   );
 }
