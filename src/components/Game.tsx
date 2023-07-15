@@ -2,12 +2,21 @@ import { useState } from 'react';
 import Field from './Field';
 import GameOver from './GameOver';
 
+interface Model {
+  squares: string[];
+  activePlayerX: boolean;
+  count: number;
+}
+
 function Game() {
   //Declaration of Hooks
   // Store the board's status
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  //Store the active player status
-  const [activePlayerX, setActivePlayerX] = useState(true);
+
+  const [{ squares, activePlayerX, count }, setModel] = useState<Model>({
+    squares: Array(9).fill(null),
+    activePlayerX: true,
+    count: 0,
+  });
 
   //Handle Click funtion - what happens when User clicks on the button
   function handleClick(index: number) {
@@ -16,24 +25,35 @@ function Game() {
     }
 
     //create a copy of current status array
-    const nextSquares = squares.slice();
+    const nextSquares = [...squares];
     //fill in new array with changes based on player's turn
     nextSquares[index] = activePlayerX == true ? 'X' : 'O';
     //update the Component's hooks
-    setSquares(nextSquares);
-    setActivePlayerX(!activePlayerX);
+    setModel({
+      squares: nextSquares,
+      activePlayerX: !activePlayerX,
+      count: count + 1,
+    });
   }
 
   // Display the status of the game: the turn OR the winner
   let status;
   const winner = calculateTheWinner(squares);
 
+  function handleResetGame() {
+    setModel({
+      squares: Array(9).fill(null),
+      activePlayerX: true,
+      count: 0,
+    });
+  }
+
   if (winner) {
     status = 'GAME OVER';
     return (
       <>
         <Field status={status} squares={squares} handleClick={handleClick} />
-        <GameOver winner={winner} />
+        <GameOver winner={winner} resetGame={handleResetGame} />
       </>
     );
   } else {
@@ -68,6 +88,9 @@ function Game() {
         return squares[a];
       }
     }
+
+    if (count == 9) return 'NONE';
+
     return null;
   }
 }
