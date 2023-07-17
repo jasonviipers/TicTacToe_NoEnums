@@ -20,6 +20,7 @@ function Game() {
 
   //Handle Click funtion - what happens when User clicks on the button
   function handleClick(index: number) {
+    console.log(index);
     if (squares[index] || calculateTheWinner(squares)) {
       return;
     }
