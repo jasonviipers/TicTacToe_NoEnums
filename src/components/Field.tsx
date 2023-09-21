@@ -1,12 +1,14 @@
 import Mark from './Mark';
+import TryAgain from './TryAgain';
 
 interface FieldProps {
   status: string;
   squares: string[];
   handleClick: (index: number) => void;
+  resetGame: () => void;
 }
 
-function Field({ status, squares, handleClick }: FieldProps) {
+function Field({ status, squares, handleClick, resetGame }: FieldProps) {
   const rows = [0, 1, 2];
   const columns = [0, 1, 2];
 
@@ -24,7 +26,6 @@ function Field({ status, squares, handleClick }: FieldProps) {
       </>
     </div>
   ));
-  console.log(cells);
 
   return (
     <>
@@ -33,6 +34,7 @@ function Field({ status, squares, handleClick }: FieldProps) {
           <div className='h1'>{status}</div>
         </div>
         <>{cells}</>
+        <TryAgain origin='fromField' resetGame={resetGame} />
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Field from './Field';
 import GameOver from './GameOver';
+import Confetti from '../assets/customAnimation/Confetti';
 
 interface Model {
   squares: string[];
@@ -20,7 +21,6 @@ function Game() {
 
   //Handle Click funtion - what happens when User clicks on the button
   function handleClick(index: number) {
-    console.log(index);
     if (squares[index] || calculateTheWinner(squares)) {
       return;
     }
@@ -53,7 +53,12 @@ function Game() {
     status = 'GAME OVER';
     return (
       <>
-        <Field status={status} squares={squares} handleClick={handleClick} />
+        <Field
+          status={status}
+          squares={squares}
+          handleClick={handleClick}
+          resetGame={handleResetGame}
+        />
         <GameOver winner={winner} resetGame={handleResetGame} />
       </>
     );
@@ -63,7 +68,13 @@ function Game() {
 
   return (
     <>
-      <Field status={status} squares={squares} handleClick={handleClick} />
+      <Field
+        status={status}
+        squares={squares}
+        handleClick={handleClick}
+        resetGame={handleResetGame}
+      />
+      <Confetti />
     </>
   );
 

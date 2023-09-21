@@ -30,7 +30,7 @@ function GameOver({ winner, resetGame }: GameOverProps) {
           <div className='text-emphasize bounce-in-right'>
             {transformmedWinner}
           </div>
-          <TryAgain resetGame={resetGame} />
+          <TryAgain origin='fromGameOver' resetGame={resetGame} />
         </div>
       </div>
     </>
