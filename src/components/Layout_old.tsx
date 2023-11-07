@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Field from './Field';
 import GameOver from './GameOver';
-import Confetti from '../assets/customAnimation/Confetti';
+import Confetti from '../assets/animation/Confetti';
+import TicTacToe from '../logic/tictactoe';
 
 interface Model {
   squares: string[];

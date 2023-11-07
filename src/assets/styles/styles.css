@@ -384,9 +384,12 @@ img {
 /* end */
 
 .wobble-hor-bottom {
-    -webkit-animation: wobble-hor-bottom 0.8s both;
-    animation: wobble-hor-bottom 1s both;
+    animation-name: wobble-hor-bottom;
+    animation-duration: 1s;
+    /* Длительность анимации */
     animation-iteration-count: infinite;
+    /* Бесконечное повторение */
+    animation-delay: 30s;
 }
 
 
