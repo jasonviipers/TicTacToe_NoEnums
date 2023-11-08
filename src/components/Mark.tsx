@@ -1,5 +1,5 @@
-import cross from '../assets/images/cross.svg';
-import heart from '../assets/images/heart.svg';
+// import cross from '../assets/images/cross.svg';
+// import heart from '../assets/images/heart.svg';
 
 interface MarkProps {
   content: string;
@@ -11,10 +11,10 @@ function Mark({ content, onMarkClick }: MarkProps) {
   let buttonContent;
   let imageSource;
   if (content == 'X') {
-    imageSource = cross;
+    // imageSource = cross;
     buttonContent = <img src={imageSource} alt={content} />;
   } else if (content == 'O') {
-    imageSource = heart;
+    // imageSource = heart;
     buttonContent = (
       <img
         src={imageSource}
