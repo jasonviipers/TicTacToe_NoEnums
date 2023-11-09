@@ -49,8 +49,13 @@ const StatusBar = styled.div`
   padding: 10px;
   width: 100%;
   text-align: center;
-  background-color: #333;
+  background-color: #23282B;
   color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 `;
 
 
@@ -59,11 +64,19 @@ const PlayerInfo = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
 `;
 
 const Player = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  @media (max-width: 768px) {
+    margin: 0 5px;
+  }
 `;
 
 const PlayerAvatar = styled.img`
@@ -71,10 +84,20 @@ const PlayerAvatar = styled.img`
   height: 40px;
   border-radius: 20px;
   margin-right: 8px;
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const PlayerNameSign = styled.span`
   margin-right: 4px;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #333;
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 `;
 
 const VersusImage = styled.img`
@@ -88,13 +111,19 @@ const VersusImage = styled.img`
 const PlayerSign = styled.span`
   font-weight: bold;
   font-size: 1.5em;
-  color: #333;
+  color: #FF821B;
   margin-right: 4px;
-  
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
+
 `;
 
 const Versus = styled.span`
   margin: 0 10px;
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 `;
 
 export default GamePage;

@@ -64,7 +64,7 @@ export const Container = styled.div`
         height: 100vh;
         min-height: 100vh;
         position: relative;
-        background: linear-gradient(180deg, #000000 0%, #161719 100%);
+        background: linear-gradient(180deg, #23282B 0%, #000000 100%);
         overflow: hidden;
 
     `;
