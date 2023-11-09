@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #24292d;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"), url("@/assets/fonts/Poppins.ttf") format("trueType");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Displatter";
+  src: url("@/assets/fonts/DISPLATTER.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+
