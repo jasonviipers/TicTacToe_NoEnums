@@ -1,8 +1,19 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import TicTacToe from '@/assets/img/splash_logo.png'
+import { useEffect } from "react";
 
 function SplashPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/signin');
+    }, 5000); // 10000 ms = 10 s 
+
+    return () => clearTimeout(timer); 
+  }, [navigate]);
   return (
     <SplashPages>
       <img src={TicTacToe} alt="Tic Tac Toe" />
