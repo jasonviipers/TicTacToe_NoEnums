@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useSpring, animated } from '@react-spring/web';
 
 interface BoardProps {
   tiles: string[];
@@ -6,12 +7,22 @@ interface BoardProps {
 }
 
 const Board = ({ tiles, onTileClick }: BoardProps) => {
+  // Animation for Circle
+  const circleStyle = useSpring({
+        
+  });
+
+  // Animation for Cross
+  const crossStyle = useSpring({
+       
+  });
+  
   return (
     <BoardWrapper>
-      {tiles.map((tile, index) => (
+       {tiles.map((tile, index) => (
         <Tile key={index} onClick={() => onTileClick(index)}>
-          {tile === 'O' && <Circle />}
-          {tile === 'X' && <Cross />}
+          {tile === 'O' && <Circle style={circleStyle} />}
+          {tile === 'X' && <Cross style={crossStyle} />}
         </Tile>
       ))}
     </BoardWrapper>
@@ -22,7 +33,7 @@ const BoardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  background: #000;
+  background: #161719;
   padding: 10px;
   border-radius: 10px;
 `;
@@ -39,14 +50,14 @@ const Tile = styled.div`
   position: relative;
 `;
 
-const Circle = styled.div`
+const Circle = styled(animated.div)`
   width: 80%;
   height: 80%;
   border: 10px solid red;
   border-radius: 50%;
 `;
 
-const Cross = styled.div`
+const Cross = styled(animated.div)`
   width: 80%;
   height: 80%;
  &::before {

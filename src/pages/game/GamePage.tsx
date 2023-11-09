@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Container } from '../home/HomePage';
 import Board from '@/components/Board/Board';
+import Vs from '@/assets/img/vs_small.png';
 
 const GamePage = () => {
   const [gameState, setGameState] = useState(Array(9).fill(null));
@@ -30,7 +31,7 @@ const GamePage = () => {
           <PlayerNameSign>Aayush</PlayerNameSign>
           <PlayerSign>X</PlayerSign>
         </Player>
-        <Versus>VS</Versus>
+        <Versus><VersusImage src={Vs} alt="Versus" /></Versus>
         <Player>
           <PlayerAvatar src={'https://avatars.githubusercontent.com/u/55942632?v=4'} alt="Opponent Avatar" />
           <PlayerNameSign>Dora</PlayerNameSign>
@@ -76,9 +77,20 @@ const PlayerNameSign = styled.span`
   margin-right: 4px;
 `;
 
+const VersusImage = styled.img`
+  width: auto;
+  height: auto;
+  @media (max-width: 768px) {
+    width: 30px;
+  }
+`;
+
 const PlayerSign = styled.span`
   font-weight: bold;
   font-size: 1.5em;
+  color: #333;
+  margin-right: 4px;
+  
 `;
 
 const Versus = styled.span`
