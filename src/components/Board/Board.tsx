@@ -16,7 +16,6 @@ const Board = ({ tiles, onTileClick }: BoardProps) => {
   const crossStyle = useSpring({
        
   });
-  
   return (
     <BoardWrapper>
        {tiles.map((tile, index) => (
@@ -53,7 +52,7 @@ const Tile = styled.div`
 const Circle = styled(animated.div)`
   width: 80%;
   height: 80%;
-  border: 10px solid red;
+  border: 10px solid #FF821B;
   border-radius: 50%;
 `;
 
@@ -78,8 +77,6 @@ const Cross = styled(animated.div)`
     top: 50%;
     transform: translateY(-50%);
   }
-
-
 `;
 
 export default Board;

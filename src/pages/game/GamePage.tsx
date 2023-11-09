@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Container } from '../home/HomePage';
 import Board from '@/components/Board/Board';
 import Vs from '@/assets/img/vs_small.png';
+import Dora from '@/assets/img/signin_Dora.png';
 
 const GamePage = () => {
   const [gameState, setGameState] = useState(Array(9).fill(null));
@@ -33,7 +34,7 @@ const GamePage = () => {
         </Player>
         <Versus><VersusImage src={Vs} alt="Versus" /></Versus>
         <Player>
-          <PlayerAvatar src={'https://avatars.githubusercontent.com/u/55942632?v=4'} alt="Opponent Avatar" />
+          <PlayerAvatar src={Dora} alt="Opponent Avatar" />
           <PlayerNameSign>Dora</PlayerNameSign>
           <PlayerSign>O</PlayerSign>
         </Player>
