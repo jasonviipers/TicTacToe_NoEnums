@@ -4,32 +4,26 @@ import { Container } from '../home/HomePage';
 import Board from '@/components/Board/Board';
 
 const GamePage = () => {
-  // Assuming the game state is an array of null (empty), 'X', or 'O'
   const [gameState, setGameState] = useState(Array(9).fill(null));
-  const currentPlayer = 'X'; // or 'O', determined by game logic
+  const [currentPlayer, setCurrentPlayer] = useState('X');
 
-  // Handling a click on a tile (not complete game logic, just an example)
-  const handleTileClick = (index:any) => {
-    if (gameState[index] === null) {
-      const newGameState = [...gameState];
-      newGameState[index] = currentPlayer;
-      setGameState(newGameState);
-    }
-    // Add further game logic here
-  };
+ // Handling a click on a tile
+ const handleTileClick = (index:any) => {
+  // Proceed only if the tile is empty and the game is not over
+  if (gameState[index] === null) {
+    const newGameState = [...gameState];
+    newGameState[index] = currentPlayer;
+    setGameState(newGameState);
+    // Toggle the player
+    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+    // Add further game logic here, such as checking for a win or a draw
+  }
+};
 
   return (
     <Container>
       <StatusBar>Your Turn</StatusBar>
-      {/* <Board>
-        {gameState.map((tile, index) => (
-          <Tile key={index} onClick={() => handleTileClick(index)}>
-            {tile}
-          </Tile>
-        ))}
-      </Board> */}
       <Board tiles={gameState} onTileClick={handleTileClick} />
-
       <PlayerInfo>
         <Player>
           <PlayerAvatar src={'https://avatars.githubusercontent.com/u/55942632?v=4'} alt="Player Avatar" />
@@ -58,22 +52,6 @@ const StatusBar = styled.div`
   color: white;
 `;
 
-// const Board = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(3, 1fr);
-//   gap: 10px;
-//   margin: 20px;
-// `;
-
-const Tile = styled.div`
-  background-color: #fff;
-  height: 100px; // Your preferred size
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2em;
-  color: #333;
-`;
 
 const PlayerInfo = styled.div`
   display: flex;

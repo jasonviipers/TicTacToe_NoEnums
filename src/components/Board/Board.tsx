@@ -49,19 +49,26 @@ const Circle = styled.div`
 const Cross = styled.div`
   width: 80%;
   height: 80%;
-  &:before, &:after {
+ &::before {
     content: '';
-    position: absolute;
     width: 10px;
     height: 80%;
-    background-color: red;
+    background: red;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
-  &:before {
-    transform: rotate(45deg);
+  &::after {
+    content: '';
+    width: 80%;
+    height: 10px;
+    background: red;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
-  &:after {
-    transform: rotate(-45deg);
-  }
+
+
 `;
 
 export default Board;
