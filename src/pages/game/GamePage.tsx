@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Container } from '../home/HomePage';
 import Board from '@/components/Board/Board';
@@ -7,25 +7,46 @@ import Dora from '@/assets/img/signin_Dora.png';
 
 const GamePage = () => {
   const [gameState, setGameState] = useState(Array(9).fill(null));
-  const [currentPlayer, setCurrentPlayer] = useState('X');
+  const [currentPlayer, setCurrentPlayer] = useState<'X' | 'O'>('X');
+  const [winner, setWinner] = useState<'X' | 'O' | 'TIE' | null>(null);
 
- // Handling a click on a tile
- const handleTileClick = (index:any) => {
-  // Proceed only if the tile is empty and the game is not over
-  if (gameState[index] === null) {
-    const newGameState = [...gameState];
-    newGameState[index] = currentPlayer;
-    setGameState(newGameState);
-    // Toggle the player
-    setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
-    // Add further game logic here, such as checking for a win or a draw
-  }
-};
+  // Handling a click on a tile
+  const handleTileClick = (index: any) => {
+    // Proceed only if the tile is empty and the game is not over
+    if (!gameState[index] && !winner) {
+      const newGameState = [...gameState];
+      newGameState[index] = currentPlayer;
+      setGameState(newGameState);
+
+      const foundWinner = calculateWinner(newGameState);
+      if (foundWinner) {
+        setWinner(foundWinner);
+      } else if (!newGameState.includes(null)) {
+        // It's a tie if all tiles are filled and there's no winner
+        setWinner('TIE');
+      } else {
+        // Toggle the player
+        setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+      }
+    }
+  };
+  const resetGame = () => {
+    setGameState(Array(9).fill(null));
+    setCurrentPlayer('X');
+    setWinner(null);
+  };
 
   return (
     <Container>
-      <StatusBar>Your Turn</StatusBar>
+      {winner ? (
+        <StatusBar>{winner === 'TIE' ? 'Tie Game' : `Player ${winner} Wins!`}</StatusBar>
+      ) : (
+        <StatusBar>Your Turn, Player {currentPlayer}</StatusBar>
+      )}
       <Board tiles={gameState} onTileClick={handleTileClick} />
+      {winner && (
+        <ResetButton onClick={resetGame}>New Game</ResetButton>
+      )}
       <PlayerInfo>
         <Player>
           <PlayerAvatar src={'https://avatars.githubusercontent.com/u/55942632?v=4'} alt="Player Avatar" />
@@ -43,6 +64,39 @@ const GamePage = () => {
   );
 };
 
+const calculateWinner = (tiles: any) => {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (tiles[a] && tiles[a] === tiles[b] && tiles[a] === tiles[c]) {
+      return tiles[a];
+    }
+  }
+  return null;
+}
+
+const ResetButton = styled.button`
+  background: #FF821B;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 20px;
+  &:hover {
+    background: #e07a15;
+  }
+`;
 
 const StatusBar = styled.div`
   position: absolute;
