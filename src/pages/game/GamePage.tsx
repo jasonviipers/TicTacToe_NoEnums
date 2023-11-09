@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Container } from '../home/HomePage';
+import Board from '@/components/Board/Board';
 
 const GamePage = () => {
   // Assuming the game state is an array of null (empty), 'X', or 'O'
@@ -20,13 +21,15 @@ const GamePage = () => {
   return (
     <Container>
       <StatusBar>Your Turn</StatusBar>
-      <Board>
+      {/* <Board>
         {gameState.map((tile, index) => (
           <Tile key={index} onClick={() => handleTileClick(index)}>
             {tile}
           </Tile>
         ))}
-      </Board>
+      </Board> */}
+      <Board tiles={gameState} onTileClick={handleTileClick} />
+
       <PlayerInfo>
         <Player>
           <PlayerAvatar src={'https://avatars.githubusercontent.com/u/55942632?v=4'} alt="Player Avatar" />
@@ -55,12 +58,12 @@ const StatusBar = styled.div`
   color: white;
 `;
 
-const Board = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin: 20px;
-`;
+// const Board = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   gap: 10px;
+//   margin: 20px;
+// `;
 
 const Tile = styled.div`
   background-color: #fff;

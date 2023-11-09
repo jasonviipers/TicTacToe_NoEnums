@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import SigninDora from '@/assets/img/signin_Dora.png'
+import { useNavigate } from 'react-router-dom';
 
 // import { useAuth } from "@/lib/auth";
 
@@ -16,6 +17,8 @@ type SignInFormValues = z.infer<typeof schema>;
 
 
 function SignInPage() {
+    // const auth = useAuth();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
